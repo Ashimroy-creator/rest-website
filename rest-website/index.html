@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Hut Restaurant & Caterer | Premium Dining in Kalyani</title>
+    <meta name="description" content="Experience authentic North Indian and Indo-Chinese dining at Royal Hut Restaurant & Caterer in Kalyani. Elegant ambience, signature biryanis, and premium catering.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6a1027', // Deep Burgundy / Maroon
+                        'primary-dark': '#4f0a1c',
+                        accent: '#d2ab4b', // Warm Gold
+                        'accent-hover': '#b59341',
+                        surface: '#fdfbf6', // Cream / Off-white Background
+                        charcoal: {
+                            DEFAULT: '#2b2a29',
+                            light: '#4b4a49',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'gold': '0 4px 14px 0 rgba(210, 171, 75, 0.39)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #fdfbf6;
+            color: #2b2a29;
+            antialiased;
+        }
+        
+        /* Smooth Scroll & Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navbar Transition */
+        #navbar {
+            transition: background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+        }
+        
+        .nav-scrolled {
+            background-color: rgba(253, 251, 246, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-scrolled .nav-link, .nav-scrolled .logo-text {
+            color: #2b2a29 !important;
+        }
+
+        .nav-scrolled .mobile-menu-btn {
+            color: #2b2a29 !important;
+        }
+
+        /* Hover Lifts */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.12);
+        }
+        
+        /* Button Pulsate */
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(210, 171, 75, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(210, 171, 75, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(210, 171, 75, 0); }
+        }
+        .btn-pulse {
+            animation: pulse-gold 2s infinite;
+        }
+
+        /* Image Overlays */
+        .img-overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fdfbf6; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d2ab4b; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b59341; 
+        }
+
+        .mobile-cta-safe {
+            padding-bottom: env(safe-area-inset-bottom, 16px);
+        }
+    </style>
+</head>
+<body class="font-sans">
+
+    <!-- NAVIGATION BAR -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-400 bg-transparent py-4 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 cursor-pointer">
+                    <a href="#" class="logo-text font-serif text-2xl md:text-3xl font-bold tracking-wide transition-colors duration-300">
+                        Royal Hut<span class="text-accent">.</span>
+                    </a>
+                    <p class="logo-text text-[10px] md:text-xs uppercase tracking-widest opacity-80 transition-colors duration-300">Restaurant & Caterer</p>
+                </div>
+                
+                <!-- Desktop Links -->
+                <div class="hidden md:flex flex-1 justify-center items-center space-x-8">
+                    <a href="#about" class="nav-link font-medium text-sm hover:text-accent transition-colors">About</a>
+                    <a href="#menu" class="nav-link font-medium text-sm hover:text-accent transition-colors">Menu</a>
+                    <a href="#gallery" class="nav-link font-medium text-sm hover:text-accent transition-colors">Gallery</a>
+                    <a href="#reviews" class="nav-link font-medium text-sm hover:text-accent transition-colors">Reviews</a>
+                    <a href="#contact" class="nav-link font-medium text-sm hover:text-accent transition-colors">Contact</a>
+                </div>
+
+                <!-- Desktop CTA -->
+                <div class="hidden md:block">
+                    <a href="#book" class="bg-accent hover:bg-accent-hover text-white px-6 py-2.5 rounded text-sm font-semibold transition-all shadow-gold hover:shadow-lg flex items-center space-x-2">
+                        <i data-lucide="utensils" class="w-4 h-4"></i>
+                        <span>Reserve Table</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="mobile-menu-btn text-white focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-surface shadow-soft border-b border-gray-100">
+            <div class="px-4 pt-2 pb-6 space-y-1 text-center">
+                <a href="#about" class="block px-3 py-3 text-base font-medium text-charcoal hover:bg-gray-50 hover:text-accent border-b border-gray-100">About</a>
+                <a href="#menu" class="block px-3 py-3 text-base font-medium text-charcoal hover:bg-gray-50 hover:text-accent border-b border-gray-100">Menu</a>
+                <a href="#gallery" class="block px-3 py-3 text-base font-medium text-charcoal hover:bg-gray-50 hover:text-accent border-b border-gray-100">Gallery</a>
+                <a href="#reviews" class="block px-3 py-3 text-base font-medium text-charcoal hover:bg-gray-50 hover:text-accent border-b border-gray-100">Reviews</a>
+                <a href="#contact" class="block px-3 py-3 text-base font-medium text-charcoal hover:bg-gray-50 hover:text-accent">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <!-- Using high quality Unsplash food placeholder -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Indian Food Experience" class="w-full h-full object-cover" />
+            <div class="absolute inset-0 bg-primary/40 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto pt-20">
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-tight mb-6 fade-in-up">
+                Experience Royal Dining <br class="hidden md:block"/> in the Heart of Kalyani
+            </h1>
+            <p class="text-lg md:text-xl text-gray-200 mb-10 font-light tracking-wide fade-in-up" style="transition-delay: 200ms;">
+                Authentic Flavors. Elegant Ambience. Memorable Moments.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6 fade-in-up" style="transition-delay: 400ms;">
+                <a href="#book" class="w-full sm:w-auto bg-accent hover:bg-accent-hover text-white px-8 py-3.5 rounded text-base font-semibold transition-all btn-pulse flex items-center justify-center space-x-2">
+                    <i data-lucide="book-open-check" class="w-5 h-5"></i>
+                    <span>Reserve Your Table</span>
+                </a>
+                <a href="#menu" class="w-full sm:w-auto bg-transparent border border-accent/80 hover:bg-accent/10 text-white px-8 py-3.5 rounded text-base font-semibold transition-all flex items-center justify-center space-x-2">
+                    <i data-lucide="menu-square" class="w-5 h-5"></i>
+                    <span>Explore Menu</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Trust Banner -->
+        <div class="absolute bottom-20 md:bottom-12 w-full z-10 hidden md:block fade-in-up" style="transition-delay: 600ms;">
+            <div class="max-w-5xl mx-auto px-4 flex justify-between justify-center items-center bg-white/10 backdrop-blur-md rounded-xl p-4 md:p-6 border border-white/20">
+                <div class="flex items-center space-x-3 text-white">
+                    <div class="flex text-accent">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                        <i data-lucide="star-half" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <div>
+                        <p class="font-bold">4.7/5 Rating</p>
+                        <p class="text-xs text-gray-300">from 8,800+ Guests</p>
+                    </div>
+                </div>
+                <div class="w-px h-10 bg-white/20"></div>
+                <div class="flex items-center space-x-3 text-white">
+                    <div class="bg-primary/50 p-2 rounded-full">
+                        <i data-lucide="users" class="w-5 h-5 text-accent"></i>
+                    </div>
+                    <p class="font-medium">Family-Friendly Dining</p>
+                </div>
+                <div class="w-px h-10 bg-white/20"></div>
+                <div class="flex items-center space-x-3 text-white">
+                    <div class="bg-primary/50 p-2 rounded-full">
+                        <i data-lucide="car-front" class="w-5 h-5 text-accent"></i>
+                    </div>
+                    <p class="font-medium">Drive-through Available</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 bg-surface relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <!-- Image -->
+                <div class="relative fade-in-up rounded-2xl overflow-hidden shadow-soft hover-lift">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Restaurant Ambience" class="w-full h-[500px] object-cover" />
+                    <!-- Decorative Element -->
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary rounded-xl -z-10"></div>
+                </div>
+
+                <!-- Text Content -->
+                <div class="fade-in-up" style="transition-delay: 200ms;">
+                    <h4 class="text-accent font-semibold tracking-wider uppercase text-sm mb-3">About The Experience</h4>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-primary mb-6">A Taste of Royalty</h2>
+                    <p class="text-charcoal-light text-lg mb-8 leading-relaxed">
+                        At Royal Hut, every meal is crafted to bring people together. From rich North Indian curries to sizzling tandoori platters and flavorful biryanis, we serve experiences that feel both indulgent and comforting.
+                    </p>
+                    
+                    <div class="space-y-4 mb-10">
+                        <div class="flex items-start space-x-4">
+                            <div class="mt-1 bg-accent/20 p-2 rounded-full text-accent">
+                                <i data-lucide="sparkles" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-charcoal">Premium Ambience</h5>
+                                <p class="text-sm text-charcoal-light">Designed for elegance, perfect for dates, families, and celebrations.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="mt-1 bg-accent/20 p-2 rounded-full text-accent">
+                                <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-charcoal">Warm Hospitality</h5>
+                                <p class="text-sm text-charcoal-light">A service that makes you feel treated like royalty.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="mt-1 bg-accent/20 p-2 rounded-full text-accent">
+                                <i data-lucide="chef-hat" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-charcoal">Consistent Quality</h5>
+                                <p class="text-sm text-charcoal-light">Authentic recipes passed down, utilizing the freshest ingredients.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGNATURE MENU SECTION -->
+    <section id="menu" class="py-24 bg-white relative">
+        <!-- Subtle Background Pattern -->
+        <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%236a1027\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16 fade-in-up">
+                <h4 class="text-accent font-semibold tracking-wider uppercase text-sm mb-3">Culinary Masterpieces</h4>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-primary">Signature Menu</h2>
+                <div class="w-24 h-1 bg-accent mx-auto mt-6 rounded"></div>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                
+                <!-- Item 1 -->
+                <div class="bg-surface rounded-xl overflow-hidden shadow-soft hover-lift fade-in-up relative group border border-gray-100">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mutton Biryani" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-x-0 bottom-0 h-1/2 img-overlay"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="bg-accent text-white text-xs font-bold px-2 py-1 rounded">Chef's Special</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold text-primary">Royal Mutton Biryani</h3>
+                            <span class="text-accent font-semibold">₹350</span>
+                        </div>
+                        <p class="text-sm text-charcoal-light">A fragrant symphony of long-grain basmati, tender mutton, and secret aromatic spices, served with raita.</p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="bg-surface rounded-xl overflow-hidden shadow-soft hover-lift fade-in-up relative group border border-gray-100" style="transition-delay: 100ms;">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1628294895950-9805252327bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Tandoori Chicken" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-x-0 bottom-0 h-1/2 img-overlay"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold text-primary">Sizzling Tandoori Chicken</h3>
+                            <span class="text-accent font-semibold">₹280</span>
+                        </div>
+                        <p class="text-sm text-charcoal-light">Spring chicken marinated in hung curd and traditional spices, char-grilled to perfection in a clay oven.</p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="bg-surface rounded-xl overflow-hidden shadow-soft hover-lift fade-in-up relative group border border-gray-100" style="transition-delay: 200ms;">
+                    <div class="h-56 overflow-hidden relative">
+                        <!-- Using generic meat curry placeholder -->
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Champaran Mutton" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-x-0 bottom-0 h-1/2 img-overlay"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold text-primary">Ahuna Champaran Mutton</h3>
+                            <span class="text-accent font-semibold">₹380</span>
+                        </div>
+                        <p class="text-sm text-charcoal-light">Slow-cooked in an earthen pot with whole garlic and rustic spices, locking in irresistible authentic flavors.</p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="bg-surface rounded-xl overflow-hidden shadow-soft hover-lift fade-in-up relative group border border-gray-100" style="transition-delay: 0ms;">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chicken Tikka" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-x-0 bottom-0 h-1/2 img-overlay"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold text-primary">Smoky Chicken Tikka</h3>
+                            <span class="text-accent font-semibold">₹250</span>
+                        </div>
+                        <p class="text-sm text-charcoal-light">Boneless chicken chunks marinated in spiced yogurt, fired in the tandoor for a smoky, tender bite.</p>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="bg-surface rounded-xl overflow-hidden shadow-soft hover-lift fade-in-up relative group border border-gray-100" style="transition-delay: 100ms;">
+                    <div class="h-56 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1588825364897-bc18da87c706?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chilli Garlic Noodles" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-x-0 bottom-0 h-1/2 img-overlay"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold text-primary">Chilli Garlic Noodles</h3>
+                            <span class="text-accent font-semibold">₹180</span>
+                        </div>
+                        <p class="text-sm text-charcoal-light">Wok-tossed noodles with a spicy, garlicky kick, fresh vegetables, and an authentic Indo-Chinese flair.</p>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="bg-surface rounded-xl overflow-hidden shadow-soft hover-lift fade-in-up relative group border border-gray-100" style="transition-delay: 200ms;">
+                    <div class="h-56 overflow-hidden relative">
+                        <!-- Mocktail Placeholder -->
+                        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Virgin Mojito" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                        <div class="absolute inset-x-0 bottom-0 h-1/2 img-overlay"></div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="font-serif text-xl font-bold text-primary">Classic Virgin Mojito</h3>
+                            <span class="text-accent font-semibold">₹120</span>
+                        </div>
+                        <p class="text-sm text-charcoal-light">A refreshing blend of fresh mint leaves, lime juice, and sparkling soda to cleanse the palate.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom CTA -->
+            <div class="text-center fade-in-up" style="transition-delay: 300ms;">
+                <a href="#full-menu" class="inline-block border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 rounded text-base font-semibold transition-colors duration-300">
+                    View Full Menu
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY CHOOSE US -->
+    <section class="py-20 bg-primary relative text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
+                <!-- Feature 1 -->
+                <div class="flex flex-col items-center text-center fade-in-up">
+                    <div class="w-16 h-16 rounded-full bg-white/10 border border-white/20 flex items-center justify-center mb-4 transition-transform hover:scale-110">
+                        <i data-lucide="star" class="w-8 h-8 text-accent fill-current"></i>
+                    </div>
+                    <h5 class="font-bold text-lg mb-1">Highly Rated</h5>
+                    <p class="text-sm text-white/70">4.7/5 from thousands of guests</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="flex flex-col items-center text-center fade-in-up" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 rounded-full bg-white/10 border border-white/20 flex items-center justify-center mb-4 transition-transform hover:scale-110">
+                        <i data-lucide="users" class="w-8 h-8 text-accent"></i>
+                    </div>
+                    <h5 class="font-bold text-lg mb-1">Perfect for Families</h5>
+                    <p class="text-sm text-white/70">Spacious seating & kid-friendly</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="flex flex-col items-center text-center fade-in-up" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 rounded-full bg-white/10 border border-white/20 flex items-center justify-center mb-4 transition-transform hover:scale-110">
+                        <i data-lucide="utensils-crossed" class="w-8 h-8 text-accent"></i>
+                    </div>
+                    <h5 class="font-bold text-lg mb-1">Wide Variety</h5>
+                    <p class="text-sm text-white/70">Authentic Indian & Chinese</p>
+                </div>
+                <!-- Feature 4 -->
+                <div class="flex flex-col items-center text-center fade-in-up" style="transition-delay: 0ms;">
+                    <div class="w-16 h-16 rounded-full bg-white/10 border border-white/20 flex items-center justify-center mb-4 transition-transform hover:scale-110">
+                        <i data-lucide="party-popper" class="w-8 h-8 text-accent"></i>
+                    </div>
+                    <h5 class="font-bold text-lg mb-1">Celebrations</h5>
+                    <p class="text-sm text-white/70">Ideal for parties & catering</p>
+                </div>
+                <!-- Feature 5 -->
+                <div class="flex flex-col items-center text-center fade-in-up" style="transition-delay: 100ms;">
+                    <div class="w-16 h-16 rounded-full bg-white/10 border border-white/20 flex items-center justify-center mb-4 transition-transform hover:scale-110">
+                        <i data-lucide="map-pin" class="w-8 h-8 text-accent"></i>
+                    </div>
+                    <h5 class="font-bold text-lg mb-1">Easy Access</h5>
+                    <p class="text-sm text-white/70">Prime location in Kalyani</p>
+                </div>
+                <!-- Feature 6 -->
+                <div class="flex flex-col items-center text-center fade-in-up" style="transition-delay: 200ms;">
+                    <div class="w-16 h-16 rounded-full bg-white/10 border border-white/20 flex items-center justify-center mb-4 transition-transform hover:scale-110">
+                        <i data-lucide="gem" class="w-8 h-8 text-accent"></i>
+                    </div>
+                    <h5 class="font-bold text-lg mb-1">Premium Dining</h5>
+                    <p class="text-sm text-white/70">An opulent aesthetic experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section id="gallery" class="py-24 bg-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h4 class="text-accent font-semibold tracking-wider uppercase text-sm mb-3">Visual Journey</h4>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-primary">The Royal Hut Gallery</h2>
+            </div>
+
+            <!-- Masonry Layout -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="col-span-2 row-span-2 overflow-hidden rounded-xl fade-in-up group hover-lift relative shadow">
+                    <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Restaurant Ambience" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 min-h-[400px]" />
+                    <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                        <i data-lucide="camera" class="w-10 h-10 text-white"></i>
+                    </div>
+                </div>
+                <div class="overflow-hidden rounded-xl fade-in-up group hover-lift shadow relative" style="transition-delay: 100ms;">
+                    <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Food Close up" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 min-h-[192px]" />
+                </div>
+                <div class="overflow-hidden rounded-xl fade-in-up group hover-lift shadow relative" style="transition-delay: 200ms;">
+                    <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Table Setup" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 min-h-[192px]" />
+                </div>
+                <div class="col-span-2 overflow-hidden rounded-xl fade-in-up group hover-lift shadow relative" style="transition-delay: 300ms;">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dining Experience" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 min-h-[192px] max-h-[192px]" />
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center fade-in-up">
+                <a href="#" class="text-primary font-medium border-b border-primary hover:text-accent hover:border-accent transition-colors pb-1">Follow us on Instagram for more</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS -->
+    <section id="reviews" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h4 class="text-accent font-semibold tracking-wider uppercase text-sm mb-3">Testimonials</h4>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-primary">Voices of Our Guests</h2>
+                <div class="flex justify-center mt-6 text-accent">
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    <i data-lucide="star-half" class="w-5 h-5 fill-current"></i>
+                </div>
+                <p class="mt-2 text-sm text-charcoal-light font-medium">Over 8,800+ Happy Customers</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div class="bg-surface p-8 rounded-2xl shadow-soft fade-in-up border border-gray-50 relative">
+                    <i data-lucide="quote" class="w-12 h-12 text-accent/20 absolute top-6 right-6"></i>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold font-serif text-lg">A</div>
+                        <div>
+                            <h5 class="font-bold text-charcoal">Ananya S.</h5>
+                            <div class="flex text-accent h-4">
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-charcoal-light italic font-serif leading-relaxed line-clamp-4">"The ambience feels elegant and welcoming. Food quality is consistently excellent. The Mutton Biryani is absolute perfection. A true gem in Kalyani!"</p>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="bg-surface p-8 rounded-2xl shadow-soft fade-in-up border border-gray-50 relative" style="transition-delay: 100ms;">
+                    <i data-lucide="quote" class="w-12 h-12 text-accent/20 absolute top-6 right-6"></i>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold font-serif text-lg">R</div>
+                        <div>
+                            <h5 class="font-bold text-charcoal">Rahul M.</h5>
+                            <div class="flex text-accent h-4">
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-charcoal-light italic font-serif leading-relaxed line-clamp-4">"Perfect family restaurant with great service and amazing dishes. The Tandoori platter is a must-try. The staff is extremely polite."</p>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="bg-surface p-8 rounded-2xl shadow-soft fade-in-up border border-gray-50 relative" style="transition-delay: 200ms;">
+                    <i data-lucide="quote" class="w-12 h-12 text-accent/20 absolute top-6 right-6"></i>
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold font-serif text-lg">S</div>
+                        <div>
+                            <h5 class="font-bold text-charcoal">Sneha D.</h5>
+                            <div class="flex text-accent h-4">
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                                <i data-lucide="star-half" class="w-3 h-3 fill-current"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-charcoal-light italic font-serif leading-relaxed line-clamp-4">"Loved the Indo-Chinese food here! The Crispy Chicken is highly recommended. Great place for celebrations. Will visit again soon."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION & CONTACT -->
+    <section id="contact" class="py-24 bg-surface border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden flex flex-col lg:flex-row">
+                <!-- Text Details -->
+                <div class="lg:w-5/12 p-10 lg:p-14 bg-primary text-white flex flex-col justify-center relative overflow-hidden">
+                    <!-- Decor -->
+                    <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                    
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold mb-8 relative z-10">Visit Us</h2>
+                    
+                    <div class="space-y-8 relative z-10">
+                        <div class="flex items-start space-x-4">
+                            <i data-lucide="map-pin" class="w-6 h-6 text-accent mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Location</h4>
+                                <p class="text-white/80 leading-relaxed font-light">ITI More Durga Puja Ground, B-16/19, A-B Connector, Block B, Kalyani, West Bengal</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4">
+                            <i data-lucide="phone" class="w-6 h-6 text-accent mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Phone</h4>
+                                <p class="text-white/80 leading-relaxed font-light font-mono text-lg">098368 32967</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <i data-lucide="clock" class="w-6 h-6 text-accent mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Hours</h4>
+                                <p class="text-white/80 leading-relaxed font-light">Open daily till 11:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 relative z-10">
+                        <a href="https://maps.google.com" target="_blank" class="inline-flex items-center space-x-2 bg-white text-primary px-6 py-3 rounded font-bold hover:bg-gray-100 transition-colors">
+                            <span>Get Directions</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Map Embed Placeholder -->
+                <div class="lg:w-7/12 h-96 lg:h-auto bg-gray-200 relative">
+                    <!-- Google Maps Iframe (Placeholder coordinates) -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.0560375630666!2d88.43542711536783!3d22.986616422997103!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f8be0000000000%3A0x0!2sKalyani%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1619800000000!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"
+                        class="absolute inset-0 w-full h-full grayscale-[20%] hover:grayscale-0 transition-all duration-500">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION -->
+    <section id="book" class="py-24 relative overflow-hidden bg-primary-dark text-center">
+        <!-- Geometric Accent overlay -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#d2ab4b 1px, transparent 1px); background-size: 30px 30px;"></div>
+        
+        <div class="relative z-10 max-w-4xl mx-auto px-4">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Ready for a Royal Dining Experience?</h2>
+            <p class="text-lg text-white/80 mb-10 font-light max-w-2xl mx-auto">
+                Secure your table in advance or order your favorite flavors to enjoy at home.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="tel:09836832967" class="w-full sm:w-auto bg-accent hover:bg-accent-hover text-white px-8 py-4 rounded text-lg font-bold transition-all shadow-gold hover:-translate-y-1 flex items-center justify-center space-x-2">
+                    <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                    <span>Book a Table</span>
+                </a>
+                <a href="#order" class="w-full sm:w-auto bg-transparent border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-4 rounded text-lg font-bold transition-all hover:-translate-y-1 flex items-center justify-center space-x-2">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span>Order Online</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-charcoal text-white pt-16 pb-8 border-t-4 border-accent relative pb-[env(safe-area-inset-bottom,16px)] md:pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div class="md:col-span-2">
+                    <a href="#" class="font-serif text-3xl font-bold tracking-wide mb-4 inline-block text-white">
+                        Royal Hut<span class="text-accent">.</span>
+                    </a>
+                    <p class="text-gray-400 font-serif text-xl mb-4">রয়েল হাট রেঁস্তোরা</p>
+                    <p class="text-gray-400 text-sm leading-relaxed max-w-sm">
+                        Experience authentic flavors and elegant ambience in the heart of Kalyani. A perfect destination for families, food lovers, and celebrations.
+                    </p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-white transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-white transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-accent hover:text-white transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white border-b border-white/10 pb-2 inline-block">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-gray-400 hover:text-accent transition-colors text-sm">About Us</a></li>
+                        <li><a href="#menu" class="text-gray-400 hover:text-accent transition-colors text-sm">Our Menu</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-accent transition-colors text-sm">Gallery</a></li>
+                        <li><a href="#reviews" class="text-gray-400 hover:text-accent transition-colors text-sm">Testimonials</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-accent transition-colors text-sm">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Hours -->
+                <div>
+                    <h4 class="font-bold text-lg mb-6 text-white border-b border-white/10 pb-2 inline-block">Opening Hours</h4>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between text-sm text-gray-400">
+                            <span>Mon - Fri</span>
+                            <span class="text-white">11:00 AM - 11:00 PM</span>
+                        </li>
+                        <li class="flex justify-between text-sm text-gray-400">
+                            <span>Saturday</span>
+                            <span class="text-white">11:00 AM - 11:30 PM</span>
+                        </li>
+                        <li class="flex justify-between text-sm text-gray-400">
+                            <span>Sunday</span>
+                            <span class="text-white">11:00 AM - 11:30 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 mb-16 md:mb-0">
+                <p>&copy; 2026 Royal Hut Restaurant & Caterer. All rights reserved.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MOBILE STICKY CTA (Visible only on mobile) -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 shadow-[0_-4px_20px_rgba(0,0,0,0.1)] z-50 mobile-cta-safe pb-safe pb-4">
+        <div class="grid grid-cols-3 divide-x divide-gray-100">
+            <a href="tel:09836832967" class="flex flex-col items-center justify-center py-3 px-1 text-charcoal hover:bg-gray-50 transition-colors">
+                <i data-lucide="phone-call" class="w-5 h-5 text-primary mb-1"></i>
+                <span class="text-[10px] font-bold uppercase tracking-wider">Call Now</span>
+            </a>
+            <a href="#book" class="flex flex-col items-center justify-center py-3 px-1 bg-primary text-white transition-colors relative">
+                <!-- Small glow effect behind center button -->
+                <div class="absolute inset-0 bg-primary opacity-20 blur-xl"></div>
+                <i data-lucide="calendar-heart" class="w-5 h-5 mb-1 relative z-10"></i>
+                <span class="text-[10px] font-bold uppercase tracking-wider relative z-10">Reserve Table</span>
+            </a>
+            <a href="#order" class="flex flex-col items-center justify-center py-3 px-1 text-charcoal hover:bg-gray-50 transition-colors">
+                <i data-lucide="shopping-bag" class="w-5 h-5 text-accent mb-1"></i>
+                <span class="text-[10px] font-bold uppercase tracking-wider">Order Online</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+                navbar.classList.remove('py-4');
+                navbar.classList.add('py-3');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+                navbar.classList.remove('py-3');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Intersection Observer for Smooth Fade-In Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: Stop observing after animation
+                    // observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Handle initial navigation state if page loaded scrolled
+        if (window.scrollY > 50) {
+            navbar.classList.add('nav-scrolled');
+            navbar.classList.remove('py-4');
+            navbar.classList.add('py-3');
+        }
+    </script>
+</body>
+</html>
